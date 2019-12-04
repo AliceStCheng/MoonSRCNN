@@ -22,6 +22,7 @@ class DatasetFromFolder(torch.utils.data.Dataset):
 
 		# Input image is bicubic downsampled and then re-upsampled to simulate
 		# an input LR image.
+		w,h = input.size
 		input = input.resize((int(w/self._upscale), int(h/self._upscale)),
 							resample=PIL.Image.BICUBIC)
 		input = input.resize((w, h), resample=PIL.Image.BICUBIC)
